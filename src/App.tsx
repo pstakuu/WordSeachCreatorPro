@@ -45,6 +45,12 @@ function App() {
             setActivePuzzleId(id)
             setView('play')
           }}
+          onDelete={(id) => {
+            setPuzzles((current) => current.filter((puzzle) => puzzle.id !== id))
+            if (activePuzzleId === id) {
+              setActivePuzzleId(null)
+            }
+          }}
         />
       ) : null}
 
