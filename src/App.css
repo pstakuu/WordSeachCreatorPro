@@ -92,6 +92,10 @@
   gap: 1rem;
 }
 
+.puzzle-card-wrapper {
+  position: relative;
+}
+
 .add-puzzle-button,
 .puzzle-card {
   aspect-ratio: 1;
@@ -112,6 +116,48 @@
 .puzzle-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.puzzle-card-active {
+  box-shadow: 0 0 0 3px #4b0082;
+}
+
+.puzzle-delete-menu {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #1a1a1a;
+  z-index: 1;
+}
+
+.delete-puzzle-button {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #b00020;
+  border: 2px solid #b00020;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-puzzle-button:hover {
+  background: #8f001a;
+  border-color: #8f001a;
+}
+
+.cancel-delete-button {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
 }
 
 .add-puzzle-plus {
