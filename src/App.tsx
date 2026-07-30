@@ -1,17 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { CreateWordSearch } from './components/CreateWordSearch'
 import { MainScreen } from './components/MainScreen'
 import { PlayWordSearch } from './components/PlayWordSearch'
 import { StartScreen } from './components/StartScreen'
 import type { AppView, WordSearchPuzzle } from './types'
+import { loadPuzzles, savePuzzles } from './utils/puzzleStorage'
 import { generateWordSearch } from './utils/wordSearchGenerator'
 
 function App() {
   const [view, setView] = useState<AppView>('start')
-  const [puzzles, setPuzzles] = useState<WordSearchPuzzle[]>([])
+  const [puzzles, setPuzzles] = useState<WordSearchPuzzle[]>(() => loadPuzzles())
   const [activePuzzleId, setActivePuzzleId] = useState<string | null>(null)
   const [createError, setCreateError] = useState<string | null>(null)
+
+  useEffect(() => {
+    savePuzzles(puzzles)
+  }, [puzzles])
 
   const activePuzzle = puzzles.find((puzzle) => puzzle.id === activePuzzleId) ?? null
 
